@@ -1757,30 +1757,21 @@
                 return fetch(url, { signal: ctrl.signal }).finally(() => clearTimeout(tid));
             }
 
-            // Primary: alfa-leetcode-api (CORS-enabled public API)
-            fetchWithTimeout(`https://alfa-leetcode-api.onrender.com/${USERNAME}`, 10000)
+            // Primary: tashif LeetCode Stats API (CORS-enabled, confirmed live)
+            fetchWithTimeout(`https://leetcode-stats.tashif.codes/${USERNAME}`, 10000)
                 .then(r => { if (!r.ok) throw new Error(); return r.json(); })
                 .then(data => {
-                    if (!data || data.errors) throw new Error();
+                    if (!data || data.status === 'error') throw new Error();
+                    // tashif field names match renderStats() exactly
                     renderStats(data);
                 })
                 .catch(() => {
-                    // Fallback: leetcode-stats-api (another CORS-friendly mirror)
-                    fetchWithTimeout(`https://leetcode-stats-api.herokuapp.com/${USERNAME}`, 10000)
+                    // Fallback: alfa-leetcode-api
+                    fetchWithTimeout(`https://alfa-leetcode-api.onrender.com/${USERNAME}`, 10000)
                         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
                         .then(data => {
-                            if (!data || data.status === 'error') throw new Error();
-                            renderStats({
-                                totalSolved: data.totalSolved,
-                                easySolved: data.easySolved,
-                                mediumSolved: data.mediumSolved,
-                                hardSolved: data.hardSolved,
-                                totalQuestions: data.totalQuestions,
-                                totalEasy: data.totalEasy,
-                                totalMedium: data.totalMedium,
-                                totalHard: data.totalHard,
-                                ranking: data.ranking
-                            });
+                            if (!data || data.errors) throw new Error();
+                            renderStats(data);
                         })
                         .catch(showError);
                 });
