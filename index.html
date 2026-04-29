@@ -1,77 +1,14 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>&#8203;</title> 
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            overflow: hidden;
-            cursor: none; /* Hides the cursor to disorient the user */
-        }
-
-        #overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            /* Starts completely black */
-            background: #000; 
-            pointer-events: none; 
-            z-index: 2;
-            transition: background 0.1s ease;
-        }
-
-        #content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #1a1a1a; /* Barely lighter than black */
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.2rem;
-            letter-spacing: 8px;
-            text-align: center;
-            user-select: none;
-            z-index: 1;
-        }
-    </style>
-</head>
+<html>
+<head>Nur Mohammod Sajib</head>
 <body>
+<p>Nur Mohammod Sajib</p>
+<p>What am I doing?</p>
+<p>👻</p>
+<p>I wanna keep it a secret… haha</p> <b>
+<p>So why did I create this site?
+Well, I made this website to showcase my HTML skills 😎
+that I learned in Intermediate ICT!</p>
 
-    <div id="content">
-        SOME DOORS<br><br>SHOULD REMAIN CLOSED
-    </div>
-    <div id="overlay"></div>
-
-    <script>
-        const overlay = document.getElementById('overlay');
-
-        // Creates a dim "flashlight" effect that follows the invisible cursor
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            overlay.style.background = `radial-gradient(circle 90px at ${x}px ${y}px, transparent 0%, rgba(0,0,0,0.98) 80%, #000 100%)`;
-        });
-
-        // Touch support for mobile devices
-        document.addEventListener('touchmove', (e) => {
-            const x = e.touches[0].clientX;
-            const y = e.touches[0].clientY;
-            overlay.style.background = `radial-gradient(circle 90px at ${x}px ${y}px, transparent 0%, rgba(0,0,0,0.98) 80%, #000 100%)`;
-        });
-
-        // Resets to black if the mouse leaves the window
-        document.addEventListener('mouseleave', () => {
-            overlay.style.background = `#000`;
-        });
-    </script>
+<p>I got this domain for free! Might be the dumbest use of it—but it's fun!</p>
 </body>
 </html>
